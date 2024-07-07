@@ -1,0 +1,171 @@
+@import 'global/reset';
+@import 'global/vars';
+@import 'global/ints';
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 1.3;
+  color: $primary;
+  overflow-x: hidden;
+  background-color: $light;
+
+  &.lock {
+    overflow-y: hidden;
+  }
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@import 'lego/header';
+@import 'lego/footer';
+@import 'lego/menu';
+
+.title {
+  font-family: 'Rubik',
+    sans-serif;
+  text-align: center;
+  font-size: 90px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  color: $light;
+
+  &--light {
+    color: $primary;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1200px) {
+    font-size: calc(36px + (90 - 36) * ((100vw - 360px) / (1200 - 360)));
+  }
+}
+
+.headline {
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 48px;
+  text-transform: uppercase;
+  color: $accent;
+
+  @media (max-width: 1200px) {
+    font-size: calc(24px + (48 - 24) * ((100vw - 360px) / (1200 - 360)));
+  }
+}
+
+.section {
+  background-repeat: no-repeat;
+  background-position: top 10px center;
+  background-size: 80vw;
+  padding: 50px 0 70px;
+  background-color: $dark;
+  text-align: center;
+
+  &--light {
+    background-color: $light;
+  }
+
+  &--dark {
+    background-color: $dark;
+    color: $light;
+  }
+
+  @media(max-width: 768px) {
+    padding-bottom: 50px;
+  }
+}
+
+.social {
+  &__title {
+    font-size: 32px;
+    text-transform: uppercase;
+    color: $light;
+    margin-bottom: 14px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 14px;
+    }
+  }
+
+  &__link {
+    position: relative;
+    width: fit-content;
+    display: block;
+    text-transform: uppercase;
+    color: $accent;
+    transition: color 0.4s, outline 0.4s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: -4px;
+      background-color: $accent;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform 0.4s ease-in-out;
+    }
+
+    &:focus {
+      outline: solid 1px $accent;
+      border-radius: 4px;
+      outline-offset: 4px;
+    }
+
+    &:hover {
+      color: $accent;
+
+      &::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+
+    &:active {
+      color: $primary;
+
+      &:before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+  }
+}
+
+.text-bold {
+  font-weight: 600;
+}
